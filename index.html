@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="zl.ico">
+  <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_642775_bj6gqt1ou44jwcdi.css"> -->
+  <title>软件质量控制平台</title>
+  <!-- 软件质量控制平台 -->
+  <!--<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">-->
+  <% if (process.env.NODE_ENV === 'production') { %>
+    <!-- 生产环境 -->
+    <script>
+      (function () {
+        var s = document.createElement('script');
+        s.src = './config/index.js?v=' + new Date().getTime();
+        document.getElementsByTagName('head')[0].appendChild(s);
+      })();
+    </script>
+  <% }else { %>
+    <!-- 开发环境 -->
+    <script src="./static/config/index.js?v=<%=new Date().getTime()%>"></script>
+  <% } %>
+</head>
+<!-- <script src="http://echarts.baidu.com/build/dist/echarts.js"></script> -->
+
+<body>
+  <div id="app"></div>
+</body>
+<style>
+  /* body::-webkit-scrollbar{width: 5px;background-color: #ccc;} 
+
+body::-webkit-scrollbar-thumb{background-color: #8b8b8b;}
+div::-webkit-scrollbar{width: 6px;height: 9px;}
+div::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb:horizontal, div::-webkit-scrollbar-thumb:vertical{background-color: #cac5bc;}
+div::-webkit-scrollbar-track-piece{background-color: rgba(0,0,0,.04);} */
+
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    /* padding: 5px 5px; */
+    /* margin-left: 9px; */
+    background-color: #fff;
+    /* display: none; */
+    display: block;
+}
+::-webkit-scrollbar-thumb {
+    border-radius:5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .1)
+}
+.el-pager li{
+  color: #409EFF;
+}
+.el-pager li.active{
+  color: #000;
+}
+</style>
+<style lang="scss">
+  .saltitle [class*=" el-icon-"], [class^=el-icon-]{
+    font-size: 26px;
+    color: #fff;
+    font-weight: 700;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .el-select-dropdown__wrap,.el-scrollbar__wrap{
+    margin-bottom: -3px !important;
+  }
+  
+  .el-tag{
+      min-width: 60px;
+      padding: 0 6px;
+  }
+  .el-tabs__item{
+    padding: 0;
+    width: 120px;
+    text-align: center;
+  }
+  
+  .el-scrollbar__wrap{
+    overflow: auto !important;
+  }
+  .el-scrollbar__thumb{
+    background-color: transparent !important;
+  }
+
+  
+.el-table{
+  z-index: 0 !important;
+}
+.el-message,.el-message--error{
+  z-index: 19999 !important;
+}
+.el-message,.el-message--success{
+  z-index: 19999 !important;
+}
+.el-scrollbar__view,.el-select-dropdown__list{
+  position: static !important;
+}
+/* .el-time-panel__content::after, .el-time-panel__content::before{
+    margin-top: 35px !important;
+} */
+</style>
+<!-- <script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script> -->
+<script>
+  window.onload = function () {
+    document.onkeypress = banBackSpace
+    document.onkeydown = banBackSpace
+  }
+  function banBackSpace (e) {
+    var ev = e || window.event
+    var obj = ev.target || ev.srcElement
+    var t = obj.type || obj.getAttribute('type')
+    var vReadOnly = obj.getAttribute('readonly')
+    vReadOnly = (vReadOnly === '') ? false : vReadOnly
+    var flag1 = (ev.keyCode === 8 && (t === 'password' || t === 'text' || t === 'textarea') && vReadOnly === 'readonly') ? true : false
+    var flag2 = (ev.keyCode === 8 && t !== 'password' && t !== 'text' && t !== 'textarea') ? true : false
+
+    if (flag2) {
+      return false
+    }
+    if (flag1) {
+      return false
+    }
+  }
+</script>
+</html>
